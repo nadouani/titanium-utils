@@ -40,6 +40,24 @@ module.exports = function(grunt){
         watch: {
             files: ['<%= jshint.files %>'],
             tasks: ['jshint', 'concat:dev']
+        },
+        qunit: {
+            //all: ['test/**/*.html']
+            all: {
+                options: {
+                    urls: [
+                      'http://localhost:3000/test/index.html',
+                    ]
+                }
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 3000,
+                    base: '.'
+                }
+            }
         }
     });
 
@@ -47,7 +65,10 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify']);
-    grunt.registerTask('dev', ['jshint', 'concat:dev']);
+    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify', 'test']);
+    grunt.registerTask('dev', ['jshint', 'concat:dev', 'test']);
+    grunt.registerTask('test', ['connect', 'qunit']);
 };
