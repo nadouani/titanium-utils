@@ -42,7 +42,6 @@ module.exports = function(grunt){
             tasks: ['jshint', 'concat:dev']
         },
         qunit: {
-            //all: ['test/**/*.html']
             all: {
                 options: {
                     urls: [
@@ -68,7 +67,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify', 'test']);
-    grunt.registerTask('dev', ['jshint', 'concat:dev', 'test']);
+    
+    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify']);
+    grunt.registerTask('dev', ['jshint', 'concat:dev']);
     grunt.registerTask('test', ['connect', 'qunit']);
 };
