@@ -37,8 +37,18 @@ TiUtils.prototype.isEmpty = function(v, allowBlank){
 TiUtils.prototype.isDefined = function(value){
     return typeof value !== 'undefined';
 };
-    
-TiUtils.prototype.apply = function(o, c){
+
+/**
+ * A method that copy the properties of a config object into a destination object.
+ * 
+ * @param {Object} dest destination object, the reveiver of the properties
+ * @param {Object} config object to copy in the destination object
+ * @param {Object} defaults object that contains the de default values
+ */
+TiUtils.prototype.apply = function(o, c, defaults){
+    if(defaults){
+        this.apply(o, defaults);
+    }
     if(o && c && typeof c == 'object'){
         for(var p in c){
             o[p] = c[p];
