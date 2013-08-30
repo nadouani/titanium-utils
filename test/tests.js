@@ -1,27 +1,40 @@
 QUnit.module('tests');
 
-
 var tiUtils = new TiUtils(); 
 
+test( "Test isEmpty()", function(){
+    
+    ok(tiUtils.isEmpty(null), "'null' is empty");
+    ok(tiUtils.isEmpty(undefined), "'undefined' is empty");
+    ok(tiUtils.isEmpty([]), "[null] is empty");
+    ok(tiUtils.isEmpty('', false, "empty string is empty is blank is not allowed"));
+    ok(!tiUtils.isEmpty('', true, "empty string is not empty is blank is allowed"));
+    ok(!tiUtils.isEmpty(0), "0 is not empty");
+    
+});
+
 test( "Test isArray()", function() {
-    ok(!tiUtils.isArray(undefined));
-    ok(!tiUtils.isArray(null));
-    ok(!tiUtils.isArray(""));
-    ok(!tiUtils.isArray(1));
-    ok(!tiUtils.isArray(true));
-    ok(!tiUtils.isArray(false));
-    ok(!tiUtils.isArray(new Date()));
-    ok(tiUtils.isArray([]));
-    ok(tiUtils.isArray([1])); 
+    ok(!tiUtils.isArray(undefined), "'undefined' is not an array");
+    ok(!tiUtils.isArray(null), "'null' is not an array");
+    ok(!tiUtils.isArray(""), "emptry string is not an array");
+    ok(!tiUtils.isArray(1), "number 1 is not an array");
+    ok(!tiUtils.isArray(true), "true is not an array");
+    ok(!tiUtils.isArray(false), "false is not an array");
+    ok(!tiUtils.isArray(new Date()), "Date is not an array");
+    ok(tiUtils.isArray([]), "[] is an erray");
+    ok(tiUtils.isArray([1]), "[1] is an array"); 
+    ok(tiUtils.isArray([1, 2]), "[1, 2] is an array"); 
+    ok(tiUtils.isArray([true, false]), "[true, false] is an array"); 
+    ok(tiUtils.isArray(["foo", "bar"]), "['foo', 'bar'] is an array"); 
 });
 
 test( "Test cropPrefix()", function() {
     ok(!tiUtils.cropPrefix());
     
-    ok('top' === tiUtils.cropPrefix('containerTop', 'container', true));
-    ok('Top' === tiUtils.cropPrefix('containerTop', 'container'));
-    ok('containerTop' === tiUtils.cropPrefix('containerTop', null, true));
-
+    ok('top' === tiUtils.cropPrefix('ctTop', 'ct', true), "crop 'ctTop' using 'ct' prefix gives 'top'");
+    ok('Top' === tiUtils.cropPrefix('ctTop', 'ct'), "crop 'ctTop' using 'ct' prefix gives 'Top'");
+    ok('ctTop' === tiUtils.cropPrefix('ctTop', null, true), "crop 'ctTop' using null prefix gives 'ctTop'");
+    ok('ctTop' === tiUtils.cropPrefix('ctTop'), "crop 'ctTop' using 'undefined' prefix gives 'ctTop'");
 });
 
 test( "Test getPrefixed()", function() {
