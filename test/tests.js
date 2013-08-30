@@ -1,7 +1,8 @@
 QUnit.module('tests');
 
 
-var tiUtils = TiUtils(); 
+var tiUtils = new TiUtils(); 
+
 test( "Test isArray()", function() {
     ok(!tiUtils.isArray(undefined));
     ok(!tiUtils.isArray(null));
@@ -13,7 +14,6 @@ test( "Test isArray()", function() {
     ok(tiUtils.isArray([]));
     ok(tiUtils.isArray([1])); 
 });
-
 
 test( "Test cropPrefix()", function() {
     ok(!tiUtils.cropPrefix());

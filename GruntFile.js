@@ -57,6 +57,14 @@ module.exports = function(grunt){
                     base: '.'
                 }
             }
+        },
+        jsdoc : {
+            dist : {
+                src: ['src/**/*.js'], 
+                options: {
+                    destination: 'doc'
+                }
+            }
         }
     });
 
@@ -66,9 +74,11 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
     
-    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify']);
+    grunt.registerTask('prod', ['jshint', 'concat:prod', 'uglify', 'jsdoc']);
     grunt.registerTask('dev', ['jshint', 'concat:dev']);
     grunt.registerTask('test', ['connect', 'qunit']);
+    
 };
