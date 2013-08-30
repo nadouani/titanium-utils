@@ -1,6 +1,6 @@
 QUnit.module('tests');
 
-var tiUtils = new TiUtils(); 
+var tiUtils = new TiUtils();
 
 test( "Test isEmpty()", function(){
     
@@ -10,6 +10,22 @@ test( "Test isEmpty()", function(){
     ok(tiUtils.isEmpty('', false, "empty string is empty is blank is not allowed"));
     ok(!tiUtils.isEmpty('', true, "empty string is not empty is blank is allowed"));
     ok(!tiUtils.isEmpty(0), "0 is not empty");
+    
+});
+
+test( "Test isDefined()", function(){
+    
+    ok(!tiUtils.isDefined(), "'undefined' is undefined");
+    ok(!tiUtils.isDefined(undefined), "'undefined' is undefined");
+    ok(tiUtils.isDefined(null), "'null' is defined");
+    ok(tiUtils.isDefined(''), "empty string is defined");
+    ok(tiUtils.isDefined('value'), "string value is defined");
+    ok(tiUtils.isDefined(1), "1 is defined");
+    ok(tiUtils.isDefined([]), "[] is defined");
+    ok(tiUtils.isDefined([1]), "[1] is defined");
+    ok(tiUtils.isDefined({}), "empty object is defined");
+    ok(tiUtils.isDefined(true), "true is defined");
+    ok(tiUtils.isDefined(false), "false is defined");
     
 });
 
@@ -59,6 +75,3 @@ test( "Test getPrefixed()", function() {
     ok(prefixed.backgroundColor === undefined);
 
 });
-
-
-

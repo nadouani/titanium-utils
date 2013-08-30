@@ -29,8 +29,13 @@ TiUtils.prototype.isEmpty = function(v, allowBlank){
     return v === null || v === undefined || ((this.isArray(v) && !v.length)) || (!allowBlank ? v === '' : false);
 }; 
  
-TiUtils.prototype.isDefined = function(v){
-    return typeof v !== 'undefined';
+/**
+ * A method that returns true id the value is not undefined
+ * 
+ * @param {Object} value
+ */
+TiUtils.prototype.isDefined = function(value){
+    return typeof value !== 'undefined';
 };
     
 TiUtils.prototype.apply = function(o, c){
@@ -93,4 +98,4 @@ TiUtils.prototype.getPrefixed = function(o, prefix){
     return res;
 };
 
-exports.TiUtils = TiUtils;
+module.exports = TiUtils;
