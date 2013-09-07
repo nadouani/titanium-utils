@@ -324,6 +324,153 @@
         
             
 <dt>
+    <h4 class="name" id="each"><span class="type-signature"></span>each<span class="signature">(array, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A method that allow looping over items of an array and call a method on each of them
+This is a good replacement for the native <code>for</code> loop
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the array to loop through</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">function to be called for each item of the array <br/>
+The function takes 3 parameters:
+<p>
+<dl><dt>item:</dt><dd>the current item of array</dd></dl>
+<dl><dt>index:</dt><dd>the index of the item in the array</dd></dl>
+<dl><dt>all:</dt><dd>the initial array object</dd></dl>
+<p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ti-utils.js.html">ti-utils.js</a>, <a href="ti-utils.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="isArray"><span class="type-signature"></span>isArray<span class="signature">(array)</span><span class="type-signature"></span></h4>
     
     
@@ -697,6 +844,169 @@ If allowBlank is false, then return true if the value param is an empty string.
     
 </dd>
 
+        
+            
+<dt>
+    <h4 class="name" id="pluck"><span class="type-signature"></span>pluck<span class="signature">(arr, prop)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A method to extract the value of a property from all the items of an array.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Array of objects</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>prop</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">a property name</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ti-utils.js.html">ti-utils.js</a>, <a href="ti-utils.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    an array of elements of type of <code>prop</code>
+</div>
+
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+        <p class="code-caption">extract the <code>firstname</code> from a list of persons</p>
+    
+    <pre class="prettyprint"><code>var persons = [
+ {firstname: 'John', lastname:'Doe'},
+ {firstname: 'Chuck', lastname:'Norris'}
+];
+
+TiUtils.prototype.pluck(persons, 'firstname');
+// returns ['John', 'Chuck']</code></pre>
+
+    
+</dd>
+
         </dl>
     
     
@@ -719,7 +1029,7 @@ If allowBlank is false, then return true if the value param is an empty string.
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sat Aug 31 2013 01:12:28 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sat Sep 07 2013 12:16:50 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

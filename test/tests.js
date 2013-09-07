@@ -44,6 +44,33 @@ test( "Test isArray()", function() {
     ok(tiUtils.isArray(["foo", "bar"]), "['foo', 'bar'] is an array"); 
 });
 
+test ("Test pluck", function() {
+    var persons = [
+        {firstname: 'John', lastname: 'Doe'},
+        {firstname: 'Chuck', lastname: 'Norris'},
+        {firstname: 'Foo', lastname: 'Bar', age: 10},
+    ];
+    var result = tiUtils.pluck(persons, 'firstname');
+    
+    ok(result.length === 3);
+    ok(result.indexOf('John' > -1));
+    ok(result.indexOf('Chuck' > -1));
+    
+    result = tiUtils.pluck(persons, 'lastname');
+    
+    ok(result.length === 3);
+    ok(result.indexOf('Doe' > -1));
+    ok(result.indexOf('Norris' > -1));
+    
+    result = tiUtils.pluck(persons, 'age');
+    
+    ok(result.length === 3);
+    ok(result[0] === undefined);
+    ok(result[1] === undefined);
+    ok(result[2] === 10);
+    
+});
+
 test( "Test cropPrefix()", function() {
     ok(!tiUtils.cropPrefix());
     
